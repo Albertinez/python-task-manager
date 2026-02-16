@@ -16,3 +16,10 @@ def validate_due_date(due_date):
         return due_date
     except ValueError:
         raise ValueError("Due date must be in YYYY-MM-DD format.")
+# validation.py
+def validate_description(description):
+    """
+    Raises ValueError if the task description is too long (>500 characters)
+    """
+    if len(description) > 500:
+        raise ValueError("Description too long")

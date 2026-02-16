@@ -1,11 +1,19 @@
 from .validation import validate_task_title, validate_task_description, validate_due_date
 
 tasks = []  # Global list to store tasks
+from task_manager.validation import validate_description
 
 def add_task(tasks):
     title = input("Enter task title: ")
     description = input("Enter task description: ")
     due_date = input("Enter due date (YYYY-MM-DD): ")
+
+    # Validate description
+    try:
+        validate_description(description)
+    except ValueError as e:
+        print(e)
+        return
 
     task = {
         "title": title,
@@ -16,6 +24,7 @@ def add_task(tasks):
 
     tasks.append(task)
     print("Task added successfully!")
+
 
 
 def mark_task_complete(tasks):
